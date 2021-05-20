@@ -1,0 +1,21 @@
+type Item @goModel(model: "tutor4/graph/model.Item") {
+	id: ID!
+	name: String!
+	sku: Int!
+}
+
+type Query {
+	items: [Item!]!
+    item(sku: Int!): Item
+}
+
+input NewItem {
+	name: String!
+}
+
+type Mutation {
+	createItem(input: NewItem!): Item!
+}
+
+
+directive @goModel(model:String,models:[String!]) on OBJECT|INPUT_OBJECT|SCALAR|ENUM|INTERFACE|UNION
